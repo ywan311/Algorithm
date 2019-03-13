@@ -15,7 +15,6 @@ public class Example3 {
 			System.out.print(this.value + " ");
 			if (this.next != null)
 				this.next.printAll();
-
 		}
 
 		public void addTail(int value) {
