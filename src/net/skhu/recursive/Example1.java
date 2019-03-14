@@ -9,20 +9,22 @@ public class Example1 {
 
 	static void insert(int[] a, int index, int value) {
 		//반복 재귀로 해보기
-		int tmp = a.length - 1;
-		while (index < tmp) {
-			a[tmp] = a[tmp - 1];
-			tmp--;
+		if(index<=a.length-1) {
+			insert(a,index+1,a[index]);
+			a[index]=value;
 		}
-		a[index] = value;
 	}
 
 	static void remove(int[] a, int index) {
-		while (index < a.length - 1) {
-			a[index] = a[++index];
+//		while (index < a.length - 1) {
+//			a[index] = a[++index];
+//		}
+//		a[a.length - 1] = 0;
+		if(index<a.length-1) {
+			a[index]=a[index+1];
+			remove(a,index+1);
 		}
-		a[a.length - 1] = 0;
-
+		a[a.length-1]=0;
 	}
 
 	public static void main(String[] args) {
@@ -30,8 +32,9 @@ public class Example1 {
 		for (int i = 0; i < a.length; ++i)
 			a[i] = i;
 
-		remove(a, 5);
 
+//		insert(a,3,9);
+		remove(a,5);
 		print(a);
 
 	}
