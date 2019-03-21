@@ -24,7 +24,7 @@ public class StringSort {
 	}
 
 	static void selectionSort(String[] a) {
-		for (int i = 0; i < a.length - 1; ++i) {
+		for (int i = 0; i <= a.length - 1; ++i) {
 			int minIndex = findMin(a, i); // 배열 a의 i 위치부터 끝까지에서 가장 작은 값을 찾아서
 			swap(a, i, minIndex); // 그 값을 i 위치로 이동한다
 		}
