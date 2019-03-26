@@ -33,8 +33,8 @@ public class Example1 {
 			a[i] = i;
 
 
-//		insert(a,3,9);
-		remove(a,5);
+		insert(a,3,9);
+//		remove(a,5);
 		print(a);
 
 	}
