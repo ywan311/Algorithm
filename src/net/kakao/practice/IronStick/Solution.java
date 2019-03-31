@@ -5,8 +5,9 @@ import java.util.Stack;
 
 class Solution {
     public int solution(String a) {
-    	if(a.length()>100000)System.out.println("입력값이 너무 많습니다.");
-    	int answer = 0;
+    	if(a.length()>100000) {System.out.println("입력값이 너무 많습니다.");
+    		return 0;
+    	}int answer = 0;
     	char array[] = a.toCharArray();//입력문을 char배열로 변환
         Stack<Boolean> stack = new Stack<>();//괄호를 계산할 스택
         for(int i=0;i<array.length;i++) {//괄호가 stick인지 raiser인지 구분
