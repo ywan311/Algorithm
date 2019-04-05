@@ -1,6 +1,6 @@
 package net.skhu.sort;
 
-public class Person {
+class Person {
     String name;
     int age;
 
