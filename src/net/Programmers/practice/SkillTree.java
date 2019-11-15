@@ -1,8 +1,6 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 public class SkillTree {
     public int solution(String skill, String[] skill_trees) {

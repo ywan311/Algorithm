@@ -1,4 +1,4 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 import java.util.Arrays;
 import java.util.Stack;

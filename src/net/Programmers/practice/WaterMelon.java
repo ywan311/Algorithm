@@ -1,4 +1,4 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 public class WaterMelon {
     public String solution(int n){

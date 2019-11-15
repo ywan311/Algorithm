@@ -1,4 +1,4 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 public class Jjak {
     public static int solution(String s) {

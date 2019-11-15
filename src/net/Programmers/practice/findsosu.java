@@ -1,4 +1,4 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 public class findsosu {
     public int solution(String numbers) {

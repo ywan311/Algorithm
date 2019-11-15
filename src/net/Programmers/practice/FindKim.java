@@ -1,6 +1,4 @@
-package net.Programmers.Test;
-
-import java.util.Arrays;
+package net.Programmers.practice;
 
 public class FindKim {
     public String solution(String[] seoul) {

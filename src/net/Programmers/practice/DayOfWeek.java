@@ -1,11 +1,10 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class DayOfWeek {
     public String solution(int a, int b){

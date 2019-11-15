@@ -1,7 +1,6 @@
-package net.Programmers.Test;
+package net.Programmers.practice;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SkipSame {
     public int[] solution(int []arr) {
