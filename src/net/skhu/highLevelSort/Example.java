@@ -1,3 +1,5 @@
+package net.skhu.highLevelSort;
+
 import java.util.Random;
 
 public class Example {// 1번 홀수짝수 분리 홀수가 뒤, 짝수가 앞 짝수는 정렬 퀵소트 활용
