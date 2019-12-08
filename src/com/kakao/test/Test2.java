@@ -58,6 +58,6 @@ public class Test2 {
 
     public static void main(String[] args) {
         Test2 test = new Test2();
-        System.out.println(test.splitString("(()())()"));
+        System.out.println(test.splitString("()))((()"));
     }
 }

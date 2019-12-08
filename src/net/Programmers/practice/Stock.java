@@ -1,4 +1,7 @@
 package net.Programmers.practice;
+
+import java.util.ArrayList;
+
 //초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
 //
 //        제한사항
@@ -14,14 +17,14 @@ package net.Programmers.practice;
 //        4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.
 //        5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
 public class Stock {
-    static int[][] matrix;
     public int[] solution(int[] prices) {
-        int[] answer = {1,2,3,2,3};
+        int[] answer =new int[prices.length];
+        ArrayList<Integer> arrayList = new ArrayList<>();
 
         return answer;
     }
     public static void main(String args[]){
-        int[] prices={1,2,3,2,3};
+        new Stock().solution(new int[] {1,2,3,2,3});
 
     }
 }
