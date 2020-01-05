@@ -1,6 +1,10 @@
 package net.Programmers.practice;
 
-import java.util.ArrayList;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 //초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
 //
@@ -19,12 +23,21 @@ import java.util.ArrayList;
 public class Stock {
     public int[] solution(int[] prices) {
         int[] answer =new int[prices.length];
-        ArrayList<Integer> arrayList = new ArrayList<>();
-
+        for(int i=0;i<prices.length;i++){
+            int term =0;
+            for(int j=i+1;j<prices.length;j++){
+                if(prices[i]<=prices[j])term++;
+                else{
+                    term++;
+                    break;
+                }
+            }
+            answer[i] = term;
+        }
         return answer;
     }
     public static void main(String args[]){
-        new Stock().solution(new int[] {1,2,3,2,3});
+        System.out.println(Arrays.toString(new Stock().solution(new int[] {1,2,3,4,2,1})));
 
     }
 }

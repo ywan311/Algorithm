@@ -1,7 +1,7 @@
 package com.kakao.test;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Test3 {
     public int[] solution(String[] words, String[] queries) {
@@ -13,14 +13,14 @@ public class Test3 {
         }
         return answer;
     }
-    public HashMap toMap(String query){
-        HashMap<Integer,Character> map = new HashMap<>();
+    public TreeMap toMap(String query){
+        TreeMap<Integer,Character> map = new TreeMap<>();
         for(int i =0; i<query.length();i++){
             if(query.charAt(i)!='?')map.put(i,query.charAt(i));
         }
         return map;
     }
-    public int confirm(String[] words, HashMap<Integer,Character> map,int length){
+    public int confirm(String[] words, TreeMap<Integer,Character> map,int length){
         boolean flag;
         int value=0;
         for(String s : words){

@@ -7,49 +7,32 @@ import java.util.Stack;
 public class FunctionDevelop {
     public int[] solution(int[] progresses, int[] speeds) {
         int[] answer = {};
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        int tmp;
-        int a =0;
-        Stack<Integer> stack = new Stack<>();
-        for(int i=0; i<progresses.length;i++){
-            tmp=(100-progresses[i])/speeds[i];
-            System.out.println(tmp);
-            if(a==0){
-                a =tmp;
-                if(!stack.isEmpty()){
-                    arrayList.add(stack.size());
-                    while(!stack.isEmpty())stack.pop();
-                }
-                stack.push(tmp);
-            }else if(a<tmp){
-                a=tmp;
-                arrayList.add(stack.size());
-                while(!stack.isEmpty())stack.pop();
-                stack.push(tmp);
+        ArrayList<Integer> list = new ArrayList();
+        int tmp = 0;
+        int cnt =0;
+        for(int i=0;i<progresses.length;i++){
+            int day =(int)Math.ceil((double) (100-progresses[i])/(double)speeds[i]);
+            if(i==0){
+                tmp=day;
+                cnt++;
+            }else if(tmp>=day){
+                cnt++;
             }else{
-                stack.push(tmp);
+                list.add(cnt);
+                cnt=1;
+                tmp=day;
             }
+            if(progresses.length-1==i)list.add(cnt);
         }
-        if(!stack.isEmpty()) arrayList.add(stack.size());
-        answer = new int[arrayList.size()];
-        for (int i=0;i<arrayList.size();i++){
-            answer[i] = arrayList.get(i);
+        answer = new int[list.size()];
+        for(int i=0;i< list.size();i++){
+            answer[i] = list.get(i);
         }
         return answer;
-     /*   int[] dayOfend = new int[100];
-        int day = -1;
-        for(int i=0; i<progresses.length; i++) {
-            while(progresses[i] + (day*speeds[i]) < 100) {
-                day++;
-            }
-            dayOfend[day]++;
-        }
-        return Arrays.stream(dayOfend).filter(i -> i!=0).toArray();
-    }*/
     }
     public static void main (String[] args){
-        int[] a = {93,30,55};
-        int[] b = {1,6,5};
+        int[] a = {93,30,55,30,30,55};
+        int[] b = {1,30,5,30,30,5};
 
         FunctionDevelop f = new FunctionDevelop();
         System.out.println(Arrays.toString(f.solution(a,b)));

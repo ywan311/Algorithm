@@ -1,50 +1,43 @@
 package net.kakao.practice.OpenKatalk;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 class OpenKakaotalk {
 
-	static HashMap<String, String> userList = new HashMap<>();
+
 	public static String[] solution(String[] record) {
-		if (record.length > 10000) {
-			System.out.println("record scope over!");
-			return null;
-		}
-		int cnt=0;//배열의 크기
-		for(int i =0;i<record.length;i++) {
-			if(record[i].startsWith("Enter")||record[i].startsWith("Leave"))
-				cnt++;
-		}
-		String[] answer = new String[cnt];
-		for (int i = 0; i < record.length; i++) {
-			String[] tmp = record[i].split("\\s");// 0=command 1=id 2=nickname
+        HashMap<String, String> userList = new HashMap<>();
+        ArrayList<String> room = new ArrayList<>();
+        ArrayList<Boolean> flag = new ArrayList<>();
 
+        String[] answer = {};
+        for(int i=0;i<record.length;i++){
+            String[] tmp = record[i].split("\\s");
+            if(tmp[0].equals("Enter")||tmp[0].equals("Change")){
+                userList.put(tmp[1],tmp[2]);
+                if(tmp[0].equals("Enter")){
+                    room.add(tmp[1]);
+                    flag.add(true);
+                }
+            }else{
+                room.add(tmp[1]);
+                flag.add(false);
+            }
+        }
+        answer = new String[room.size()];
+        int index=0;
+        while(!room.isEmpty()){
+            StringBuilder builder = new StringBuilder();
+            builder.append(userList.get(room.remove(0)));
+            if(flag.remove(0))builder.append("님이 들어왔습니다.");
+            else builder.append("님이 나갔습니다.");
+            answer[index++]= builder.toString();
+        }
 
-			if (tmp[0].equals("Enter")) {
-				if (userList.isEmpty() || !(userList.containsKey(tmp[1]))) {
-					userList.put(tmp[1], tmp[2]);
-					answer[i]= tmp[2] + "님이 입장하였습니다.";
-				} else
-					answer[i]= tmp[2] + "enter err";
-			} else if (tmp[0].equals("Leave")) {
-				if (userList.isEmpty() || !(userList.containsKey(tmp[1])))
-					answer[i]= "leave err";
-				else {
-					String nick = userList.get(tmp[1]);
-					userList.remove(tmp[1]);
-					answer[i]= nick + "님이 나갔습니다.";
-				}
-			} else if (tmp[0].equals("Change")) {
-				if(userList.isEmpty() || !(userList.containsKey(tmp[1])))
-					answer[i]= tmp[2]+"change err";
-				else {
-					userList.replace(tmp[1], tmp[2]);
-				}
-			}else
-				answer[i]= "unknown err";
-		}
-		return answer;
+	    return answer;
 	}
 
 	public static void main(String[] args) {

@@ -5,12 +5,13 @@ import java.util.Arrays;
 public class GiveUpMath {
     public int[] solution(int[] answers) {
         int[] cnt = new int[3];
+        int answer2[] ={2, 1, 2, 3, 2, 4, 2, 5};
 
         for(int i =0; i<answers.length;i++){
             if(answers[i]==i%5 +1)cnt[0]++;
 
             if(i%2==0&&answers[i]==2)cnt[1]++;
-            else if(i%2!=0&&answers[i]==(i/2)%5+1)cnt[1]++;
+            else if(i%2!=0&&answers[i]==answer2[i%8])cnt[1]++;
 
             if((i/2)%5==0&&answers[i]==3)cnt[2]++;
             else if((i/2)%5==1&&answers[i]==1)cnt[2]++;
@@ -46,6 +47,6 @@ public class GiveUpMath {
     }
     public static void main(String[] args){
         GiveUpMath g = new GiveUpMath();
-        System.out.println(Arrays.toString(g.solution(new int[]{4,4,4,5,1})));
+        System.out.println(Arrays.toString(g.solution(new int[]{2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5})));
     }
 }
