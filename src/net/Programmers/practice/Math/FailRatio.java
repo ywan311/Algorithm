@@ -1,6 +1,5 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Math;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FailRatio {

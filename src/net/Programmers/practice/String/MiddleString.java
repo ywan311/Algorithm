@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.String;
 
 public class MiddleString {
     public String solution(String s) {

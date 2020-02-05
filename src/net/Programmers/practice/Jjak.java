@@ -1,7 +1,9 @@
 package net.Programmers.practice;
 
+//미완성
 public class Jjak {
     public static int solution(String s) {
+        System.out.println(s);
         if(s.length()==0)return 1;
         else{
             char[] tmp = s.toCharArray();
@@ -17,6 +19,6 @@ public class Jjak {
     public static void main(String[] args) {
         Jjak a = new Jjak();
         System.out.println(
-                a.solution("aabbaab"));
+                a.solution("aabbaa"));
     }
 }

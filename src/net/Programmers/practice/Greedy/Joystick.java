@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Greedy;
 
 public class Joystick {
     public int solution(String name) {

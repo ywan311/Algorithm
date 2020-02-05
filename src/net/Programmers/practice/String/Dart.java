@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.String;
 
 public class Dart {
     public int solution(String dartResult) {

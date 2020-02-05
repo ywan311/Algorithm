@@ -3,6 +3,7 @@ package net.Programmers.practice;
 
 import java.util.Arrays;
 
+//미완성
 public class Friends4Block {
     int answer = 0;
     public int solution(int m, int n, String[] board) {

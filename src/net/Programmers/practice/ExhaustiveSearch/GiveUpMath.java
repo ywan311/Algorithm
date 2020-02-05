@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.ExhaustiveSearch;
 
 import java.util.Arrays;
 

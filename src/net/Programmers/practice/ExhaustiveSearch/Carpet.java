@@ -1,4 +1,4 @@
-package net.Programmers.practice.StackQueue;
+package net.Programmers.practice.ExhaustiveSearch;
 
 import java.util.Arrays;
 

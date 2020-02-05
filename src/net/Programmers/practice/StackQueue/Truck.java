@@ -1,44 +1,37 @@
-package net.Programmers.practice;
+package net.Programmers.practice.StackQueue;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
+//미완성
 public class Truck {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
         int answer = 0;
         int sum=0;
-        ArrayList<Integer> truckList = new ArrayList<>();
-        ArrayList<Integer> bridge = new ArrayList<>();
+        Queue<Integer> truckList = new LinkedList<>();
+        Queue<Integer> bridge = new LinkedList<>();
         for(int i : truck_weights){
             truckList.add(i);
         }
         while(!truckList.isEmpty()){
-            if(sum+truckList.get(0)<=weight&&bridge.size()<=bridge_length){
-                sum+=truckList.get(0);
-                bridge.add(truckList.remove(0));
-                answer++;
-            }else{
-                if(bridge.size()>1){
-                    for(int i=0;i<bridge.size();i++){
-                        sum-=bridge.remove(0);
-                        if(sum+truckList.get(i)<=weight)answer--;
-                    }
-                }
-                else{
-                    sum-=bridge.remove(0);
-                }
+            int current = truckList.poll();
+
+            if(sum+current>weight){
                 answer+=bridge_length;
-                if(bridge.isEmpty()){
-                    sum+=truckList.get(0);
-                    bridge.add(truckList.remove(0));
-                }
+                answer--;
+                sum=0;
+                bridge.clear();
             }
-            System.out.println(bridge);
-            System.out.println(answer);
+            answer++;
+            sum+=current;
+            bridge.add(current);
+
         }
         if(!bridge.isEmpty())answer+=bridge_length;
         return answer;
     }
     public static void main(String[] args){
-        System.out.println(new Truck().solution(2,10,new int[]{7,4,5,6}));
+        System.out.println(new Truck().solution(100,100,new int[]{10,10,10,10,10,10,10,10,10,10,10}));
     }
 }

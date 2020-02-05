@@ -1,7 +1,5 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Hash;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 

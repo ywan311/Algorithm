@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Math;
 
 public class contry124 {
     public String solution(int n) {

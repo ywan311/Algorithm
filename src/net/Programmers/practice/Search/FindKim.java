@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Search;
 
 public class FindKim {
     public String solution(String[] seoul) {

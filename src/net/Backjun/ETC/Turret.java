@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.ETC;
 
 import java.util.ArrayList;
 import java.util.Scanner;
