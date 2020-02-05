@@ -1,8 +1,6 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Hash;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
 
 public class PhoneBook {
     public boolean solution(String[] phone_book) {//효율성 테스트 통과 x
