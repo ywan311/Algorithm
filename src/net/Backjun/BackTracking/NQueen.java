@@ -5,30 +5,40 @@ import java.util.*;
 
 public class NQueen {
     static int N;
-    static boolean arr[][];
+    static int answer=0;
+    static int arr[];
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         N = input.nextInt();
 
-        arr = new boolean[N][N];
-        int answer=0;
+        for(int i=1;i<=N;i++){
+            arr = new int[N+1];
+            arr[1]=i;
+            DFS(1);
 
-        for(int i=0;i<N;i++){
-            for(boolean[] a:arr)Arrays.fill(a,false);
-            answer+=DFS(0,i);
         }
         System.out.println(answer);
     }
-    public static int DFS(int x,int y){
-        for(int i=0;i<N;i++){
+    static void DFS(int row){
+        if(row ==N){
+            answer++;
+            return;
         }
-        return 0;
-    }
-    public static void checkPosition(int x,int y){
-        for(int i=0;i<N;i++){
-            arr[x][i]=true;
-
+        for(int i=1;i<=N;i++){
+            arr[row+1]=i;
+            if(checkPosition(row+1)){
+                DFS(row+1);
+            }
+            else arr[row+1]=0;
         }
-
+        arr[row]=0;
     }
+    static boolean checkPosition(int value){
+        for(int i=1;i<value;i++){
+            if(arr[i]==arr[value])return false;
+            if(Math.abs(arr[i]-arr[value])==Math.abs(i-value))return false;
+        }
+        return true;
+    }
+
 }

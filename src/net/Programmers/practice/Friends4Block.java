@@ -40,6 +40,9 @@ public class Friends4Block {
         return board;
     }
     public String[] resort(char[][] board){//수정
+
+        for(char[] a:board)System.out.println(Arrays.toString(a));
+        System.out.println("-----------------------");
         String[] result = new String[board.length];
         boolean flag=false;
         for(int i=0;i<board.length-1;i++){

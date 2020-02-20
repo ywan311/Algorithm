@@ -7,17 +7,22 @@ public class Budget {
         long answer = M/budgets.length;
         Arrays.sort(budgets);
         long sum=0;
-        for(int i=0;i<budgets.length;i++){
-            sum+=budgets[i];
-        }
+        for(int a:budgets)sum+=a;
         if(sum<=M)return budgets[budgets.length-1];
+        long left =budgets[0];
+        long right = budgets[budgets.length-1];
+        long mid;
 
-        long sum2=0;
-        for(int i=0;i<budgets.length;i++){
-            sum2+=budgets[i];
-            long tmp =i<budgets.length-1?(M-sum2)/(budgets.length-i-1):0;
-            if(answer<tmp){
-                answer= tmp;
+        while(left<=right){
+            sum=0;
+            mid = (left+right)/2;
+            for(int a:budgets)
+                sum+= a>mid?mid:a;
+            if(sum>M){
+                right = mid -1;
+            }else{
+                answer = Math.max(answer,mid);
+                left = mid+1;
             }
         }
         return (int)answer;
