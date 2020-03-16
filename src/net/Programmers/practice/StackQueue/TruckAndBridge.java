@@ -13,25 +13,21 @@ public class TruckAndBridge {
         for (int i : truck_weights) {
             truckList.add(new Truck(i, bridge_length));
         }
-        while (!truckList.isEmpty()) {
-            Truck current = truckList.poll();
-            if (current.weight + sum > weight||bridge.size()>=bridge_length) {
-                while (current.weight + sum > weight||bridge.size()>bridge_length) {
-                    Truck tmp = bridge.poll();
-                    sum -= tmp.weight;
-                    answer += tmp.distance;
-                    answer--;
-                }
+        int time=0;
+        while (!(truckList.isEmpty()&&bridge.isEmpty())) {
+            time++;
+
+            if(!bridge.isEmpty()&&bridge.peek().distance<=0){
+                sum-=bridge.poll().weight;
             }
-            answer++;
-            for (Truck t : bridge) --t.distance;
-            bridge.add(current);
-            sum+=current.weight;
+            if(!truckList.isEmpty()&& weight - sum - truckList.peek().weight >=0 ){
+                sum+=truckList.peek().weight;
+                bridge.offer(truckList.poll());
+            }
+            for(Truck t: bridge)t.distance--;
+
         }
-        int max = 0;
-        for(Truck t:bridge)max = Math.max(max,t.distance);
-        answer+=max;
-        return answer;
+        return time;
     }
 
     private class Truck {
@@ -46,6 +42,6 @@ public class TruckAndBridge {
     }
 
     public static void main(String[] args) {
-        System.out.println(new TruckAndBridge().solution(10, 10, new int[]{3,5,10,6,8,9,1,1,5,7}));
+        System.out.println(new TruckAndBridge().solution(100, 10, new int[]{3,5,10,6,8,9,1,1,5,7}));
     }
 }

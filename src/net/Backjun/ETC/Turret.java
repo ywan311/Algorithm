@@ -1,61 +1,38 @@
 package net.Backjun.ETC;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Turret {
+    public static void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public static int Solution(int x1, int y1, int r1,int x2, int y2, int r2){
-        double result;//(x1,y1)과 (x2,y2)간의 거리측정
-
-        result = Math.sqrt(Math.pow((x1 - x2), 2)+  Math.pow((y1 - y2), 2));//피타고라스
-
-
-        if ((x1 == x2 && y1 == y2)) {  //두좌표가 같은지 확인
-            if(r1==r2)					//거리가 같으면 같은원
-                return -1;
-            else
-                return 0;
-        } else if (result <  (r1 + r2)) { //두좌표간 거리가 r1+r2보다 작으면 두곳에 위치가능
-            return 2;
-        } else if (result ==  (r1 + r2)) { 	//두좌표간 거리가 r1+r2와 같으면 한곳에 위치가능
-            return 1;
-        } else if (result >  (r1 + r2)) {  //두좌표간 거리가 r1+r2보다 크면 불가능
-            return 0;
+        int loop = Integer.parseInt(br.readLine());
+        while(loop-->0){
+            String[] str = br.readLine().split(" ");
+            int answer =solve(Integer.parseInt(str[0]),Integer.parseInt(str[1]),Integer.parseInt(str[2]),Integer.parseInt(str[3]),Integer.parseInt(str[4]),Integer.parseInt(str[5]));
+            bw.write(answer+"\n");
         }
-        return 2;
+        bw.flush();
+
     }
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
-
-        ArrayList<Integer> answer = new ArrayList<>();
-        Scanner scan = new Scanner(System.in);
-
-        int n = scan.nextInt();//반복횟수 입력
-        for (int i = 0; i < n; i++) { int x1;//x좌표
-            int x2;
-            int y1;//y좌표
-            int y2;
-            int r1;//거리
-            int r2;
-            x1 = scan.nextInt();
-
-            y1 = scan.nextInt();
-
-            r1 = scan.nextInt();
-
-            x2 = scan.nextInt();
-
-            y2 = scan.nextInt();
-
-            r2 = scan.nextInt();
-
-            answer.add(Solution(x1,y1,r1,x2,y2,r2));
+    static int solve(int x1,int y1,int r1,int x2,int y2,int r2){
+        if(x1==x2&&y1==y2){
+            return r1==r2?-1:0;
         }
-        for(int i: answer){
-            System.out.println(i);
-        }
+        int absX = Math.abs(x1-x2);
+        int absY = Math.abs(y1-y2);
+        int absR1 = Math.abs(r1+r2);
+        int absR2 = Math.abs(r1-r2);
+        double distance = Math.sqrt((Math.pow(absX,2)+Math.pow(absY,2)));
+        if(distance>absR2&&distance<absR1)return 2;
+        if(distance<absR2||distance>absR1)return 0;
+        else return 1;
     }
 
 }
