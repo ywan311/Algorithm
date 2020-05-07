@@ -1,5 +1,3 @@
-package net.Programmers.practice;
-
 public class Main {
     public int solution(int n, int[] money) {
         int answer = 0;
@@ -13,6 +11,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Main().solution(5,new int[]{1,2,5}));
+        System.out.println("hello world");
     }
 }
