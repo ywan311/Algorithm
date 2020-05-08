@@ -15,7 +15,6 @@ public class NumberBaseball {
         return answer;
     }
     static void strike(String str,int strike, int ball){
-
         for(int i=0;i<3;i++){
             if(str.charAt(i)==0&&strike>0){
 

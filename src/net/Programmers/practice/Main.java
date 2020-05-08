@@ -1,16 +1,21 @@
-public class Main {
-    public int solution(int n, int[] money) {
-        int answer = 0;
-        int arr[] = new int[money.length];
-        for(int i=0;i<arr.length;i++){
-            if(money[i]==1)arr[i]=1;
-            else arr[i] = n/money[i];
-        }
+package net.Programmers.practice;
 
+import java.util.Arrays;
+
+public class Main {
+    public int solution(int[] d, int budget) {
+        int answer = 0;
+        Arrays.sort(d);
+        for(int i=0;i<d.length;i++){
+            if(d[i]<=budget){
+                budget-=d[i];
+                answer++;
+            }else break;
+        }
         return answer;
     }
 
-    public static void main(String[] args) {
-        System.out.println("hello world");
+    public static void main(String[] args){
+
     }
 }

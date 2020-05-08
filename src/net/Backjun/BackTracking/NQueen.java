@@ -15,7 +15,6 @@ public class NQueen {
             arr = new int[N+1];
             arr[1]=i;
             DFS(1);
-
         }
         System.out.println(answer);
     }
@@ -35,7 +34,7 @@ public class NQueen {
     }
     static boolean checkPosition(int value){
         for(int i=1;i<value;i++){
-            if(arr[i]==arr[value])return false;
+            if(arr[i]==arr[value])return false;//같은 열
             if(Math.abs(arr[i]-arr[value])==Math.abs(i-value))return false;
         }
         return true;

@@ -1,66 +1,56 @@
 package net.Programmers.practice;
 
+import net.Programmers.practice.String.StringSolution;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 //미완성 (18,19,20,25,28)
 public class CandidateKey {
-    static int answer = 0;
-    static boolean check[];
-    static Queue<String> queue = new LinkedList<>();
-    static String[][] arr;
     public int solution(String[][] relation) {
-        check = new boolean[relation[0].length];
-        arr = relation;
-        for(int i=1;i<=check.length;i++){
-            if(answer+i>check.length)break;
-                checkKey(i);
-        }
-        return answer;
-    }
-    static void checkKey(int length){
-        for(int i=0;i<check.length;i++){
-            if(!check[i])getList(length,"",i);
-        }
-        Set<String> set = new HashSet<>();
-        System.out.println("queue"+queue);
-        while(!queue.isEmpty()){
-            String s = queue.poll();
+        int colLen = relation[0].length;
+        int rowLen = relation.length;
+        HashSet<String> selects = new HashSet<String>();
+        HashSet<Integer> candidates = new HashSet<Integer>();
 
-            for(int j=0;j<arr.length;j++){
-                String element="";
-                for(int i=0;i<s.length();i++){
-                    element+="/"+arr[j][s.charAt(i)-'0'];
-                }
-                set.add(element);
-            }
-            System.out.println(s+"set:"+set);
-            if(set.size()==arr.length){
-                answer++;
-                for(int i=0;i<s.length();i++){
-                    check[s.charAt(i)-'0']=true;
-                }
-            }
-            set.clear();
-        }
-    }
-    static void getList(int length,String s,int n){
+        // 2진법으로 부분 집합 만들기
+        for(int biSet = 1 ; biSet < (1<<colLen) ; biSet++) {
 
-        s+=n;
-        if(length==s.length()){
-            queue.offer(s);
-            return;
+            selects.clear();
+            // 모든 데이터에 대해
+            for(int r = 0 ; r < rowLen ; r++ ) {
+                // biSet에서 1로 켜진 부분의 순번 갖고오기
+                String data = "";
+                for (int th = 0; th < colLen; th++) {
+                    // 켜진 부분들의 데이터를 갖고온다.
+                    if ((biSet & (1 << th)) != 0) {
+                        data += relation[r][th] + ",";
+                    }
+                }
+                selects.add(data);
+            }
+            if(selects.size() == rowLen ) {
+                push(candidates, biSet);
+            }
         }
-        for(int i=n+1;i<check.length;i++){
-            if(!check[i])getList(length,s,i);
+        return candidates.size();
+    }
+    static void push(HashSet<Integer> candidates, int set) {
+        for (int key : candidates) {
+            if((key & set) == key ) {
+                return;
+            }
         }
+        candidates.add(set);
     }
 
     public static void main(String[] args) {
-        System.out.println(new CandidateKey().solution(new String[][]{{"a","b","c","d"}
-                ,{"b","b","d","a"}
-                ,{"c","c","c","a"}
-                ,{"d","d","b","a"}
-                ,{"e","b","b","f"}
-                ,{"f","c","e","z"}}));
+        System.out.println(new CandidateKey().solution(new String[][]{	{"a", "1", "4"},
+                {"1","b","c"},
+                { "a","b","4"},
+                {"a","5","c"}
+        }));
+        char[] c = new char[]{'1','2'};
+        ArrayList<Character> list = new ArrayList<>();
     }
 }

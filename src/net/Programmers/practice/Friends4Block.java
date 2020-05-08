@@ -12,7 +12,6 @@ public class Friends4Block {
         char charBoard[][] = new char[board.length][board[0].length()];
         for(int i=0;i<m;i++){
             charBoard[i] = board[i].toCharArray();
-
         }
         for(int i=0;i<m-1;i++){
             for (int j=0;j<n-1;j++){
@@ -34,6 +33,7 @@ public class Friends4Block {
                 if(check[i][j]){
                     board[i][j]='.';
                     answer++;
+                    check[i][j] =false;
                 }
             }
         }
@@ -46,7 +46,7 @@ public class Friends4Block {
         String[] result = new String[board.length];
         boolean flag=false;
         for(int i=0;i<board.length-1;i++){
-            for (int j=0;j<board[0].length-1;j++){
+            for (int j=0;j<board[0].length;j++){
                 if(board[i+1][j]=='.'&&board[i][j]!='.'){
                     board[i+1][j]=board[i][j];
                     board[i][j]='.';
@@ -65,6 +65,10 @@ public class Friends4Block {
         }
     }
     public static void main(String[] arg){
-        System.out.println(new Friends4Block().solution(6,6,new String[]{"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"}));
+        String[]  s = new String[30];
+        for(int i=0;i<30;i++){
+            s[i] = "ABCDEFGNMABCDEFGNMABCDEFGNMHJK";
+        }
+        System.out.println(new Friends4Block().solution(30,30,s));
     }
 }

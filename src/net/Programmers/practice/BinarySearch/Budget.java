@@ -9,6 +9,7 @@ public class Budget {
         long sum=0;
         for(int a:budgets)sum+=a;
         if(sum<=M)return budgets[budgets.length-1];
+
         long left =budgets[0];
         long right = budgets[budgets.length-1];
         long mid;
@@ -29,6 +30,10 @@ public class Budget {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Budget().solution(new int[]{120,110,140,150},485));
+        int[] input = new int[100000];
+        for(int i=0;i<100000;i++){
+            input[i]=100000;
+        }
+        System.out.println(new Budget().solution(/*new int[]{120,110,140,150}*/input, 1000000000 ));
     }
 }
