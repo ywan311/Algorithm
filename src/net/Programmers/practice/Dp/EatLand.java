@@ -1,4 +1,4 @@
-package net.Programmers;
+package net.Programmers.practice.Dp;
 
 public class EatLand {
     int solution(int[][] land) {
