@@ -1,34 +1,17 @@
 package net.Programmers.practice.Dp;
 
+import java.util.Arrays;
+
 public class EatLand {
     int solution(int[][] land) {
-
         int answer=0;
-        int[][] dp= new int[land.length][2];
-        int max = 0;
-        int index=0;
-        for(int i=0;i<land[0].length;i++){
-            if(max<land[0][i]){
-                max = land[0][i];
-                index=i;
-            }
+        for(int i=1;i<land.length;i++){
+            land[i][0] += Math.max(land[i-1][1],Math.max(land[i-1][2],land[i-1][3]));
+            land[i][1] += Math.max(land[i-1][0],Math.max(land[i-1][2],land[i-1][3]));
+            land[i][2] += Math.max(land[i-1][0],Math.max(land[i-1][1],land[i-1][3]));
+            land[i][3] += Math.max(land[i-1][0],Math.max(land[i-1][1],land[i-1][2]));
         }
-        dp[0][0] = max;
-        dp[0][1]= index;
-        for(int i=1;i<dp.length;i++){
-            max=0;
-            index=0;
-            for(int j=0;j<land[i].length;j++){
-                if(max<land[i][j]&&dp[i-1][1]!=j){
-                    System.out.println(i+":"+j);
-                    max = land[i][j];
-                    index=j;
-                }
-            }
-            dp[i][0]= dp[i-1][0]+max;
-            dp[i][1] = index;
-        }
-        answer = dp[land.length-1][0];
+        for(int i:land[land.length-1])answer= Math.max(answer,i);
 
         return answer;
     }

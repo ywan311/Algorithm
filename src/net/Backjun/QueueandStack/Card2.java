@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.QueueandStack;
 
 import java.util.LinkedList;
 import java.util.Queue;
