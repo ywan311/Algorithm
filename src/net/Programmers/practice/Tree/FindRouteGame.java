@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;

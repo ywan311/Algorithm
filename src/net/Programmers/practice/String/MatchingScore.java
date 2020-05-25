@@ -1,7 +1,6 @@
-package net.Programmers.practice;
+package net.Programmers.practice.String;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class MatchingScore {
     static double[] score;

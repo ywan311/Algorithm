@@ -1,9 +1,6 @@
-package net.Programmers.practice;
-
-import net.Programmers.practice.String.StringSolution;
+package net.Programmers.practice.CAndR;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 //미완성 (18,19,20,25,28)
 public class CandidateKey {

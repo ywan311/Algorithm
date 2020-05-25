@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Programmers.practice.Math;
 
 import java.util.HashSet;
 import java.util.Set;
