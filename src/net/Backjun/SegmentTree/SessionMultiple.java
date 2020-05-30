@@ -36,8 +36,8 @@ public class SessionMultiple {
                 long value = Long.parseLong(comm[2]);
 //                long d = arr[index];
                 arr[index] =value;
-//                command1(1,0,N-1,index,value,d);
-                makeTree(1,0,N-1);
+                command1(1,0,N-1,index);
+//                makeTree(1,0,N-1);
                 System.out.println(Arrays.toString(tree));
             }
             else{
@@ -49,14 +49,11 @@ public class SessionMultiple {
         bw.flush();
 
     }
-    static void command1(int node,int start, int end, int index,long m,long d){
-        if(index<start||index>end)return;
-        tree[node]=d==0?tree[node]=tree[node]*m%mod:(tree[node]*m/d)%mod;
-        int mid =(start+end)/2;
-        if(start!=end){
-            command1(node*2,start,mid,index,m,d);
-            command1(node*2+1,mid+1,end,index,m,d);
-        }
+    static long command1(int node,int start, int end, int index){
+        if(index<start||index>end)return tree[node];
+        if(start==end&&start==index)return tree[node]=arr[index];
+        int mid = (start+end)/2;
+        return tree[node]=(command1(node*2,start,mid,index)*command1(node*2+1,mid+1,end,index))%mod;
     }
     static long command2(int node, int start, int end, int left, int right){
         if(start>right||left>end)return 1;

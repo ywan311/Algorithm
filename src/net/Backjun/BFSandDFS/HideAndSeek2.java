@@ -1,50 +1,61 @@
 package net.Backjun.BFSandDFS;
-
 import java.util.*;
+import java.io.*;
 
-public class HideAndSeek2 {
-    static int[] arr;
-//    static int answer = Integer.MAX_VALUE;
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int n = input.nextInt();
-        int k = input.nextInt();
-        arr = new int[100001];
-        Arrays.fill(arr,-1);
-//        answer = seek3(n,k);
-        int a[] = seek2(n,k);
-        System.out.println(a[0]+"\n"+a[1]);
+class HideAndSeek2 {
+    static int N, K;
+    static int[] time = new int[100001];
+    static int minTime = 987654321;
+    static int count = 0;
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        K = Integer.parseInt(st.nextToken());
+
+        if (N >= K) {
+            System.out.println((N-K) + "\n1");
+            return;
+        }
+
+        bfs();
+
+        System.out.println(minTime + "\n" + count);
     }
-    static int[] seek2(int n, int k){
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{n,0});
-        arr[n] =0;
-        int cnt =0;
 
-        return new int[]{arr[k],cnt};
-    }
-    static int seek3(int n, int k){
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(n);
-        arr[n]=0;
+    static void bfs() {
+        Queue<Integer> q = new LinkedList<Integer>();
 
-        while(!queue.isEmpty()&&arr[k]==-1){
-            int current = queue.poll();
-            int tmp =current*2;
-            while(tmp<arr.length&&arr[tmp]==-1){
-                arr[tmp] =arr[current];
-                queue.add(tmp);
-                tmp*=2;
-            }
-            if(current+1<=100000&&arr[current+1]==-1){
-                arr[current+1]= arr[current]+1;
-                queue.add(current+1);
-            }
-            if(current-1>=0&&arr[current-1]==-1){
-                arr[current-1]=arr[current]+1;
-                queue.add(current-1);
+        q.add(N);
+        time[N] = 1;
+
+        while (!q.isEmpty()) {
+            int now = q.poll();
+
+            // now 방문 시간이 최소 시간보다 크면 뒤는 더 볼 필요 없음
+            if (minTime < time[now]) return;
+
+            for (int i=0; i<3; i++) {
+                int next;
+
+                if (i == 0)         next = now + 1;
+                else if (i == 1)    next = now - 1;
+                else                next = now * 2;
+
+                if (next < 0 || next > 100000) continue;
+
+                if (next == K) {
+                    minTime = time[now];
+                    count++;
+                }
+                if (time[next] == 0 || time[next] == time[now] + 1) {
+                    q.add(next);
+                    time[next] = time[now] + 1;
+                }
             }
         }
-        return arr[k];
     }
 }
