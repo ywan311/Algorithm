@@ -15,7 +15,7 @@ public class Test1 {
 
         String tmp = s.substring(0,length);
         String subAnswer = tmp;
-        if(!tmp.equals(s.substring(length,length*2)))return;
+//        if(!tmp.equals(s.substring(length,length*2)))return;
         int n=1;
         int last=length;
         for(int i=length;i+length<=s.length();i+=length){

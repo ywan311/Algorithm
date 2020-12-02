@@ -42,10 +42,12 @@ public class CandidateKey {
     }
 
     public static void main(String[] args) {
-        System.out.println(new CandidateKey().solution(new String[][]{	{"a", "1", "4"},
-                {"1","b","c"},
-                { "a","b","4"},
-                {"a","5","c"}
+        System.out.println(new CandidateKey().solution(new String[][]{
+                {"b","2","a","a","b"},
+                {"b","2","7","1","b"},
+                {"1","0","a","a","8"},
+                {"7","5","a","a","9"},
+                {"3","0","a","f","9"},
         }));
         char[] c = new char[]{'1','2'};
         ArrayList<Character> list = new ArrayList<>();
