@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.BFSandDFS;
 
 import java.io.*;
 

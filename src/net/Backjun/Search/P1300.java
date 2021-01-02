@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.Search;
 
 import java.util.*;
 import java.util.stream.Collectors;

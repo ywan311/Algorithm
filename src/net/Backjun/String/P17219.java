@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.String;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

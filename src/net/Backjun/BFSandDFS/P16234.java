@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.BFSandDFS;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
