@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.Dp;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,13 +20,21 @@ public class P10164 {
         }
 
         int[][] dp = new int[n][m];
-        int startx = k/m;
-        int starty = k%m-1;
-        for(int i=0;i<=startx;i++){
-            for(int j=0;j<=starty;j++){
+        int startx = 0;
+        int starty = 0;
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
                 if(i==0||j==0)dp[i][j]=1;
                 else dp[i][j] = dp[i-1][j]+dp[i][j-1];
+                cnt++;
+                if(cnt==k){
+                    startx=i;
+                    starty=j;
+                    break;
+                }
             }
+            if(cnt==k)break;
         }
         int answer = dp[startx][starty];
         for(int i=startx;i<n;i++){
