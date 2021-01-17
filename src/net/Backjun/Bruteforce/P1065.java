@@ -1,4 +1,4 @@
-package net.Programmers.practice;
+package net.Backjun.Bruteforce;
 
 import java.io.BufferedReader;
 import java.io.IOException;

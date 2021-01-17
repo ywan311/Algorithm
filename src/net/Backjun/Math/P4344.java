@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.Math;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;

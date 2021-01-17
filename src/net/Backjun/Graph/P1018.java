@@ -1,4 +1,4 @@
-package net.Backjun;
+package net.Backjun.Graph;
 
 import java.io.BufferedReader;
 import java.io.IOException;
