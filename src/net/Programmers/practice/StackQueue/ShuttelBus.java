@@ -1,7 +1,6 @@
-package net.Programmers.practice;
+package net.Programmers.practice.StackQueue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ShuttelBus {

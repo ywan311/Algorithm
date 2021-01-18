@@ -1,8 +1,6 @@
-package net.Programmers;
+package net.Programmers.practice.String;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class To2N {
     public int[] solution(String s) {

@@ -1,4 +1,4 @@
-package net.Programmers;
+package net.Programmers.practice.Greedy;
 
 import java.util.Arrays;
 
