@@ -19,3 +19,5 @@ public class P1427 {
         bw.flush();
     }
 }
+
+
