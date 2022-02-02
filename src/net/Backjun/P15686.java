@@ -3,14 +3,14 @@ package net.Backjun;
 import java.io.*;
 import java.util.*;
 
+//치킨 배달
 public class P15686 {
     static int size;
     static int M;
     static List<int[]> chickens = new ArrayList<>();
     static List<int[]> house = new ArrayList<>();
-    static Set<Set<Integer>> combination = new HashSet<>();
+    static int answer = Integer.MAX_VALUE;
 
-    static boolean[] visited ;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,6 +21,7 @@ public class P15686 {
         M = Integer.parseInt(inputSize[1]);
 
 
+        //집 , 치킨집 포지션 저장
         for (int i = 0; i < size; i++) {
             String[] inputArr = br.readLine().split(" ");
             for (int j = 0; j < size; j++) {
@@ -32,52 +33,38 @@ public class P15686 {
                 }
             }
         }
-        visited = new boolean[chickens.size()];
 
-        for (int i = 0; i < chickens.size(); i++) {
-            getCombination(i, new HashSet<>());
+        for(int i =0;i< chickens.size();i++){
+            solution(i,new HashSet<>(),new boolean[chickens.size()]);
         }
-        System.out.println(combination);
-//        int answer = 0;
-//        do{
-//            int min = Integer.MAX_VALUE;
-//            int index = -1;
-//            for(int i =0;i<chickens.size();i++){
-//                int sum = 0;
-//                for(int[] a : house){
-//                    int minDistance = Integer.MAX_VALUE;
-//                    for(int j =0;j < chickens.size();j++){
-//                        if(i==j)continue;
-//                        minDistance = Math.min(minDistance,Math.abs(a[0]-chickens.get(j)[0])+Math.abs(a[1]-chickens.get(j)[1]));
-//                    }
-//                    sum += minDistance;
-//                }
-//                if(min>sum){
-//                    min=sum;
-//                    index = i;
-//                }
-//            }
-//            answer = min;
-//
-//            System.out.println(Arrays.toString(chickens.get(index)));
-//            System.out.println(index+"="+answer);
-//            chickens.remove(index);
-//        }while(M<chickens.size());
-//
-//        System.out.println(answer);
+
+        System.out.println(answer);
     }
 
-    static void getCombination(int start, Set<Integer> set) {
-        if(visited[start])return ;
-        set.add(start);
-        System.out.println(set);
-        if (set.size() == M) {
-            combination.add(set);
-            return;
+    static void solution(int start,Set<Integer> set,boolean[] visited) {
+        //치킨집 개수가 차면 거리구하기
+        if(set.size()==M){
+            int sum =0;
+            for(int[] element : house){
+                int min = Integer.MAX_VALUE;
+                for(int i : set){
+                    min = Math.min(min,Math.abs(element[0]-chickens.get(i)[0])+Math.abs(element[1]-chickens.get(i)[1]));
+                }
+                sum +=min;
+            }
+            answer = Math.min(answer,sum);
         }
-        for (int i = start; i < M; i++) {
+
+        //조합 구하기
+        for(int i =start;i< chickens.size();i++){
+            if(visited[i]){
+                continue;
+            }
+
             visited[i] = true;
-            getCombination(i, set);
+            Set<Integer> input = new HashSet<>(set);
+            input.add(i);
+            solution(i,input,visited);
             visited[i] = false;
         }
     }
