@@ -12,8 +12,8 @@ import java.util.Set;
 public class DrawingStar {
     static Set<long[]> points = new HashSet<>();
     static long minX = Long.MAX_VALUE;
-    static long maxX = Long.MIN_VALUE;
-    static long minY = Long.MAX_VALUE;
+    static long maxX = Long.MAX_VALUE;
+    static long minY = Long.MIN_VALUE;
     static long maxY = Long.MIN_VALUE;
     public String[] solution(int[][] line) {
 
