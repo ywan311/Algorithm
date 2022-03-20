@@ -1,6 +1,7 @@
 package net.Programmers.practice.StackQueue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShuttelBus {
@@ -32,7 +33,7 @@ public class ShuttelBus {
         busList.sort((o1, o2) -> o2 - o1);
 
         for (int i = busList.get(0); i >= 0; i--) {
-            if (sumArr[i] <= m && sumArr2[i] <= m * n) {
+            if (sumArr[i] < m && sumArr2[i] < m * n) {
                 answer = i==1440?"23:00":String.format("%02d:%02d", i / 60, i % 60);
                 break;
             }
@@ -42,6 +43,16 @@ public class ShuttelBus {
     }
 
     public static void main(String[] args) {
-        System.out.println(new ShuttelBus().solution(2,10,3, new String[]{"09:05","09:09","09:13"}));
+        System.out.println(new ShuttelBus().solution(1,1,5, new String[]{"08:00", "08:01", "08:02", "08:03"}));
+
+//        System.out.println(new ShuttelBus().solution(2,10,2, new String[]{"09:10","09:09","08:00"}));
+
+//        System.out.println(new ShuttelBus().solution(2,1,2, new String[]{"09:00", "09:00", "09:00", "09:00"}));
+
+//        System.out.println(new ShuttelBus().solution(1,1,5, new String[]{"00:01", "00:01", "00:01", "00:01", "00:01"}));
+
+//        System.out.println(new ShuttelBus().solution(1,1,1, new String[]{"23:59"}));
+
+//        System.out.println(new ShuttelBus().solution(10,60	,45, new String[]{"23:59","23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59", "23:59"}));
     }
 }
