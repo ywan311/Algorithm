@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-/**
- * 0 일때 처리 남음
- * 0이 아닌 친구들은 queue의 마지막으로 들어갈 수 없음
- *
- * */
 public class P1132 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -27,20 +22,15 @@ public class P1132 {
                 map.put(c,map.getOrDefault(c,0L)+(long)Math.pow(10,s.length()-j-1));
             }
         }
-
         for(char c : map.keySet()){
             list.add(new Element(c,map.get(c)));
         }
-        int count = 0;
-        for (boolean b : checkZero) {
-            if (b) {
-                count++;
-            }
-        }
+
         int start = 9;
         long answer = 0;
         System.out.println(Arrays.toString(checkZero));
-        list.sort((o1, o2) -> (int) (o2.value-o1.value));
+        list.sort((o1, o2) -> Long.compare(o2.value,o1.value));
+        System.out.println(list);
         if(list.size()==10){
             for(int i =list.size()-1;i>=0;i--){
                 Element e = list.get(i);
@@ -57,7 +47,7 @@ public class P1132 {
 
         while(!queue.isEmpty()){
             Element e = queue.poll();
-            answer+=e.value*start;
+            answer+= e.value * start;
             start--;
         }
         System.out.println(answer);
