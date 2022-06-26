@@ -2,6 +2,9 @@ package net.Backjun;
 import java.io.*;
 import java.util.*;
 
+
+
+
 public class P1005 {
     static int[] time;
     static int[] inDegree;
